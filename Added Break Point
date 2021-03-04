@@ -10,6 +10,7 @@ Finding_Turtle_Pos() >>> Returns the turtle pos
 Text_To_Speech(say, voice) >>> Says something using computer audio
 Prime_Number_Cal(number_to_cal) >>> Returns a prime number you can call
 Fib(number) >>> Returns a list with numbers using the fibonacci sequence
+Break() >>> Breaks a piece of code, allowing you to debug
 
 """
 
