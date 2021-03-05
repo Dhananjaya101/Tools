@@ -1,0 +1,100 @@
+"""
+This module contains many usefull
+functions that you can use in your
+program.
+
+Here is the list of the included functions:
+
+Finding_Mouse_Pos() >>> Returns the mouse pos
+Finding_Turtle_Pos() >>> Returns the turtle pos
+Text_To_Speech(say, voice) >>> Says something using computer audio
+Prime_Number_Cal(number_to_cal) >>> Returns a prime number you can call
+Fib(number) >>> Returns a list with numbers using the fibonacci sequence
+Break() >>> Breaks a piece of code, allowing you to debug
+
+"""
+
+import pyautogui
+import turtle
+import pyttsx3
+
+
+class Tools:
+    def Finding_Mouse_Pos():
+        """
+        This function will return a tuple
+        which contains the mouseX and mouseY
+        """
+        return(pyautogui.position())
+
+    def Finding_Turtle_Pos():
+        """
+        This function will return a tuple
+        which contains the turtleX and turtleY
+        """
+        return(turtle.position())
+
+    def Text_To_Speech(self, say: str, voice: str):
+        """
+        This function helps you in Text-To-Speech,
+        give it something to say and a gender
+        """
+        engine = pyttsx3.init()
+
+        voices = engine.getProperty('voices')
+        if voice == 'male':
+            engine.setProperty('voice', voices[0].id)
+        else:
+            engine.setProperty('voice', voices[1].id)
+
+        engine.say(say)
+        engine.runAndWait()
+
+    def Prime_Number_Cal(self, number_to_cal: int):
+        """
+        This function will return a certain prime
+        number.
+
+        Ex: print(Prime_Number_Cal(1000))
+
+        Output: 7919
+        """
+        is_prime = True
+        number = 5
+        prime_list = [2, 3]
+        prime_count = 2
+
+        while prime_count < number_to_cal:
+            is_prime = True
+            for prime in prime_list:
+                if number % prime == 0:
+                    is_prime = False
+
+            if is_prime is True:
+                prime_list.append(number)
+                prime_count = prime_count + 1
+
+            number = number + 1
+        return(prime_list[-1])
+
+    def Fib(self, number: int):
+        """
+        This function allowes you to use
+        the fibonacci sequence in your code.
+
+        Give a paremeter and it will return
+        a list of numbers.
+        """
+        return_set = []
+        a, b = 0, 1
+        while a < number:
+            return_set.append(a)
+            a, b = b, a + b
+        return(return_set)
+
+    def Break(self):
+        """
+        You can use this function anywhere
+        you want to pause a piece of code.
+        """
+        input('Press Enter to Continue ')
